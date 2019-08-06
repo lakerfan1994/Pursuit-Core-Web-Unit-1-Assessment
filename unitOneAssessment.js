@@ -7,7 +7,11 @@ let assert = require('assert')
 
 
 // Uncomment out the next line to test your solution
-// runQ1Tests()
+function isOdd(num){
+  return num % 2 === 1;
+}
+
+ runQ1Tests()
 
 
 // Question Two:
@@ -15,21 +19,62 @@ let assert = require('assert')
 // Write a function called numberOfDigits that returns how many digits are in a given number
 
 // Uncomment out the next line to test your solution
-// runQ2Tests()
+function numberOfDigits(num){
+ return num.toString().length;
+}
+ runQ2Tests()
 
 // Question Three:
 
 // Write a function called disemvowel that removes all of the vowels from a string.
 // Treat y as a consonant, not a vowel
 
+function disemvowel(str){
+  let arr = str.split('');
+  let temp = arr.filter(elem => {
+    return elem !== 'a' && elem !== 'e' && elem !== 'i' && elem !== 'o' && elem !== 'u' && elem !== 'A' && elem !== 'E' && elem !== 'I' && elem !== 'O' && elem !== 'U'
+  });
+
+  return temp.join('');
+}
+
 // Uncomment out the next line to test your solution
-// runQ3Tests()
+ runQ3Tests()
 
 // Question Four:
 // Write a function called secondSmallest that returns the second smallest number in an array
 
 // Uncomment out the next line to test your solution
-// runQ4Tests()
+
+function secondSmallest(arr){
+  let smallest;
+  let secondSmallest;
+  if(arr[0] < arr[1]){
+      smallest = arr[0];
+      secondSmallest = arr[1];
+  }
+  else{
+    smallest = arr[1];
+    secondSmallest = arr[0];
+  }
+
+  for(let i = 2; i < arr.length; i++){
+    if(arr[i] < secondSmallest){
+      if(arr[i] < smallest){
+        secondSmallest = smallest;
+        smallest = arr[i];
+      }
+      else{
+        secondSmallest = arr[i];
+      }
+    }
+  }
+
+  return secondSmallest;
+
+
+}
+ runQ4Tests()
 
 // Question Five:
 // Write a function called getLocations that takes in an array of objects that look like the array below,
@@ -43,7 +88,14 @@ let assert = require('assert')
 // ["Algeria", "Belize", "China", "Denmark"]
 
 // Uncomment out the next line to test your solution
-// runQ5Tests()
+
+function getLocations(arr){
+  return arr.map(elem => {
+    return elem.location;
+  })
+
+}
+ runQ5Tests()
 
 
 // Question Six:
@@ -52,7 +104,13 @@ let assert = require('assert')
 // Your function should use a higher-ordered function (e.g map, filter, reduce, every, sort) in its implementation
 
 // Uncomment out the next line to test your solution
-// runQ6Tests()
+
+function onlyOddStrings(arr){
+  return arr.filter(elem => {
+   return elem.length % 2 === 1;
+  })
+}
+ runQ6Tests()
 
 
 // Question Seven:
@@ -66,12 +124,29 @@ let assert = require('assert')
 // let myDay = Day(80, "sunny")
 // myDay.getDescription() // returns "It is 80 degrees and sunny"
 
+class Day{
+  constructor(temperature, weather){
+    this.temperature = temperature;
+    this.weather = weather;
+  }
+
+  getDescription(){
+    return `It is ${this.temperature} degrees and ${this.weather}`;
+  }
+}
+
 //b.
 // Make a function called getAllDayDescriptions that takes in an array of Day objects and returns an array of their descriptions.  Use a higher-ordered function (e.g map, filter, reduce, every, sort) in your implementation.
 // The output should be in the same order as the input
 
+function getAllDayDescriptions(arr){
+  return arr.map(elem => {
+    return elem.getDescription();
+  })
+}
+
 // Uncomment out the next line to test your solution
-// runQ7Tests()
+ runQ7Tests()
 
 
 
